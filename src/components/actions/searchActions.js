@@ -6,9 +6,10 @@ import {
 } from './types'
 import { API_BASE_URL } from '../../config'
 
+
 const searchMovies = query => dispatch => {
-  console.log('query', query)
   dispatch(searchMovieRequest())
+  console.log(API_BASE_URL)
   axios
     .post(`${API_BASE_URL}/api/search/`, query)
     .then(res => dispatch(searchMovieSuccess(res)))
