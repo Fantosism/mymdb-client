@@ -6,10 +6,8 @@ import {
 } from './types'
 import { API_BASE_URL } from '../../config'
 
-
 const searchMovies = query => dispatch => {
   dispatch(searchMovieRequest())
-  console.log(API_BASE_URL)
   axios
     .post(`${API_BASE_URL}/api/search/`, query)
     .then(res => dispatch(searchMovieSuccess(res)))
@@ -21,12 +19,3 @@ const searchMovies = query => dispatch => {
 }
 
 export default searchMovies
-
-// return fetch(`https://swapi.co/api/people/?search=${name}`)
-//   .then(res => {
-//     if (!res.ok) {
-//       return Promise.reject(res.statusText)
-//     }
-//     return res.json()
-//   })
-//   .then(data => data.results.map(character => character.name))

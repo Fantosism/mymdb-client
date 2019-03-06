@@ -7,16 +7,15 @@ import { API_BASE_URL } from '../../config'
 import { SET_CURRENT_USER, getErrors } from './types'
 
 export const registerUser = (userData, history) => dispatch => {
-  const url = 'https://mymdb-server.herokuapp.com/api/users/register'
   axios
-    .post(url, userData)
+    .post(`${API_BASE_URL}/api/users/register`, userData)
     .then(() => history.push('/login'))
     .catch(err => dispatch(getErrors(err)))
 }
 
 export const loginUser = userData => dispatch => {
   axios
-    .post(`https://mymdb-server.herokuapp.com/api/users/login`, userData)
+    .post(`${API_BASE_URL}/api/users/login`, userData)
     .then(res => {
       const { token } = res.data
       localStorage.setItem('jwtToken', token)
