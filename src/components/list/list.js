@@ -9,18 +9,18 @@ const List = props => {
       <CardItem
         key={movie.id}
         id={movie.id}
-        voteAverage={movie.vote_average}
-        posterPath={movie.poster_path}
+        voteAverage={movie.voteAverage || movie.vote_average}
+        posterPath={movie.posterPath || movie.poster_path}
         title={movie.title}
         authenticated={props.authenticated}
-        onFavoriteSelect={(selectedMovie, userList) =>
-          this.props.addToUserCard(selectedMovie, userList)
-        }
-        onFavoriteDeselect={(selectedMovie, userList) =>
-          this.props.removeFromUserCard(selectedMovie, userList)
-        }
-        favorites={props.favorites}
-        watchLater={props.watchLater}
+        // onFavoriteSelect={(selectedMovie, userList) =>
+        //   this.props.addToUserCard(selectedMovie, userList)
+        // }
+        // onFavoriteDeselect={(selectedMovie, userList) =>
+        //   this.props.removeFromUserCard(selectedMovie, userList)
+        // }
+        // favorites={props.favorites}
+        // watchLater={props.watchLater}
       />
     )
   })

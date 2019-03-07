@@ -39,8 +39,7 @@ class SearchBar extends Component {
       },
     }
     console.log('newQuery', newQuery)
-    let iceCream = this.props.dispatch(searchMovies(newQuery))
-    console.log('searchMovies(newQuery)', iceCream)
+    this.props.dispatch(searchMovies(newQuery))
     // this.props.history.push({
     //   pathname: `dashboard/search`,
     //   search: searchTerm,

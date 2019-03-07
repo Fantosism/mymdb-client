@@ -3,7 +3,6 @@ import setAuthToken from '../utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 import { API_BASE_URL } from '../../config'
 
-
 import { SET_CURRENT_USER, getErrors } from './types'
 
 export const registerUser = (userData, history) => dispatch => {
@@ -19,7 +18,7 @@ export const loginUser = userData => dispatch => {
     .then(res => {
       const { token } = res.data
       localStorage.setItem('jwtToken', token)
-      setAuthToken(token)
+      // setAuthToken(token)
       const decoded = jwt_decode(token)
       dispatch(setCurrentUser(decoded))
     })
@@ -32,6 +31,6 @@ export const setCurrentUser = decoded => {
 
 export const logoutUser = () => dispatch => {
   localStorage.removeItem('jwtToken')
-  setAuthToken(false)
+  // setAuthToken(false)
   dispatch(setCurrentUser({}))
 }

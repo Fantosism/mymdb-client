@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-// import { Provider } from 'react-redux'
-// import store from './store'
+import { Provider } from 'react-redux'
+import store from './store'
 import { connect } from 'react-redux'
 import { API_BASE_URL } from './config'
 
 // import jwt_decode from 'jwt-decode'
 // import { setCurrentUser, logoutUser } from './components/actions/authActions'
-// import setAuthToken from './components/utils/setAuthToken'
+import setAuthToken from './components/utils/setAuthToken'
 import NavBar from './components/navbar'
 import Splash from './components/splash'
 import Register from './components/auth/register'
 import Login from './components/auth/login'
 import ProtectedRoute from './components/protected-route/protectedRoute'
 import Dashboard from './components/dashboard/dashboard'
-// import Header from './components/header/header'
+import Header from './components/header/header'
 import Loading from './components/loading/loading'
 import Card from './components/card/card'
 // import Footer from './components/footer/footer'
@@ -23,6 +23,8 @@ import Card from './components/card/card'
 // import SearchFeed from './components/search/searchFeed'
 // import searchMovies from './components/actions/addMovieActions'
 import './index.css'
+import Axios from 'axios'
+import WatchLater from './components/WatchLater'
 
 // // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
@@ -125,12 +127,17 @@ class App extends Component {
   }
 
   componentWillMount = () => {
-    // check for jwt token, if true
-    if (true) {
+    let token = localStorage.getItem('jwtToken')
+    if (token) {
+      // setAuthToken(token)
+
+      // Axios.get(`${API_BASE_URL}/api/movie`)
+      //   .then(res => console.log('hi i am res ', res))
+
       this.setState({
         loading: false,
+        authenticated: true,
       })
-      // query db for current user cards. If query successful, setState to the user cards.
     } else {
       this.setState({
         loading: false,
@@ -144,41 +151,39 @@ class App extends Component {
 
   render() {
     return (
-      // <Provider store={store}>
-      <Router>
-        <div className='App'>
-          {this.state.loading && <Loading />}
-          <NavBar />
-          {/* <SearchFeed /> */}
-          {/* <Splash /> */}
+      <React.Fragment>
+        {console.log('i am state: ', JSON.stringify(this.state, null, 2))}
+        {this.state.loading && <Loading />}
+        <Router>
+          <div className='App'>
+            {/* <NavBar /> */}
+            {/* <SearchFeed /> */}
+            <Header {...this.props} />
 
-          <Route exact path='/' component={Splash} />
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={Login} />
+            <Route exact path='/' component={Splash} />
+            <Route exact path='/register' component={Register} />
+            <Route exact path='/login' component={Login} />
 
-          <Route
-            path='/movie/:id-:title'
-            render={props => (
-              <Card
-                {...props}
-                id={props.match.params.id}
-                authenticated={this.props.state.auth.authenticated}
-                onFavoriteSelect={selectedMovie =>
-                  this.addToUserCard(selectedMovie)
-                }
-                onFavoriteDeselect={selectedMovie =>
-                  this.removeFromUserCard(selectedMovie)
-                }
-                watchLater={this.state.watchList}
-              />
-            )}
-          />
-          <Switch>
-            <ProtectedRoute path='/dashboard' component={Dashboard} />
-          </Switch>
-        </div>
-      </Router>
-      // {/* </Provider> */}
+            <Route
+              path='/movie/:id-:title'
+              render={props => (
+                <Card
+                  {...props}
+                  id={props.match.params.id}
+                  authenticated={this.props.state.auth.authenticated}
+                  onFavoriteSelect={selectedMovie => this.addToUserCard(selectedMovie)}
+                  onFavoriteDeselect={selectedMovie => this.removeFromUserCard(selectedMovie)}
+                  watchLater={this.state.watchList}
+                />
+              )}
+            />
+            <Route exact path='/watch-later' component={WatchLater} />
+            <Switch>
+              <ProtectedRoute path='/dashboard' component={Dashboard} />
+            </Switch>
+          </div>
+        </Router>
+      </React.Fragment>
     )
   }
 }

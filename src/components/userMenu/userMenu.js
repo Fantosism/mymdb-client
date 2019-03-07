@@ -21,9 +21,7 @@ const UserMenu = props => {
           </Link>
         </li>
         <li>
-          <Link
-            className='user-menu-list__item user-menu-list__item--logout'
-            to='/logout'>
+          <Link className='user-menu-list__item user-menu-list__item--logout' to='/logout'>
             Logout
           </Link>
         </li>

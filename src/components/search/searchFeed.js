@@ -22,7 +22,6 @@ class SearchFeed extends Component {
   getQueryStrings = term => {
     const query = new URLSearchParams(term)
     const searchTerm = query.get('query')
-    // console.log('heyyyy', searchTerm)
     return searchTerm
   }
 
@@ -59,10 +58,7 @@ class SearchFeed extends Component {
 
   componentDidMount = () => {
     if (this.props.location.search) {
-      this.getSearchMovies(
-        this.getQueryStrings(this.props.location.search),
-        DEFAULT_PAGE
-      )
+      this.getSearchMovies(this.getQueryStrings(this.props.location.search), DEFAULT_PAGE)
     }
   }
 
@@ -78,8 +74,6 @@ class SearchFeed extends Component {
     if (this.props.movies) {
       const { theMovieDB } = this.props.movies
       const { page } = theMovieDB
-      console.log('heyyyy', this.props)
-      console.log(this.state)
       const searchTerm = this.getQueryStrings(this.props.location.search)
 
       return (
@@ -88,18 +82,13 @@ class SearchFeed extends Component {
           {theMovieDB.results && (
             <div>
               <p>
-                There are <b>{theMovieDB.total_results}</b> results for: "
-                {searchTerm}
+                There are <b>{theMovieDB.total_results}</b> results for: "{searchTerm}
                 ".
               </p>
-              <List list={theMovieDB.results} />
+              <List list={theMovieDB.results} ids={this.props.movies.openMovieDB} />
             </div>
           )}
-          <Button
-            className='button'
-            onClick={() => this.getSearchMovies(searchTerm, page + 1)}
-            text='Load more'
-          />
+          <Button className='button' onClick={() => this.getSearchMovies(searchTerm, page + 1)} text='Load more' />
         </div>
       )
     } else {
@@ -109,7 +98,7 @@ class SearchFeed extends Component {
 }
 
 const mapStateToProps = state => {
-  return { movies: state.search.movie.data }
+  return { movies: state.search.movie.data, authenticated: state.auth.authenticated }
 }
 
 export default withRouter(connect(mapStateToProps)(SearchFeed))

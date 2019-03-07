@@ -17,12 +17,6 @@ class Dashboard extends Component {
       queries: {},
     }
   }
-  static PropTypes = {
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    searchMovies: PropTypes.func.isRequired,
-    // queries: PropTypes.object
-  }
 
   onLogoutClick = e => {
     e.preventDefault()
@@ -64,12 +58,7 @@ class Dashboard extends Component {
     const { user } = this.props.auth
     return (
       <div>
-        <div>
-          <Header
-            authenticated={this.props.auth.authenticated}
-            user={this.props.auth.user.id}
-          />
-        </div>
+        <div>{/* <Header authenticated={this.props.auth.authenticated} user={this.props.auth.user.id} /> */}</div>
         <div className='App-main'>
           <div className='App-sidebar-wrapper'>
             {/* <SideBar
@@ -92,10 +81,7 @@ class Dashboard extends Component {
                   <b>Hey there,</b> {user.name.split(' ')[0]}
                   <p className='flow-text grey-text text-darken-1'>
                     You are logged in{' '}
-                    <span
-                      className='emoji film'
-                      role='img'
-                      aria-label='movie-reel'>
+                    <span className='emoji film' role='img' aria-label='movie-reel'>
                       🎥
                     </span>
                   </p>
@@ -126,5 +112,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser, searchMovies }
+  { logoutUser, searchMovies },
 )(Dashboard)

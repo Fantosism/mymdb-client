@@ -6,19 +6,9 @@ import PropTypes from 'prop-types'
 const ProtectedRoute = ({ component: Component, auth, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      auth.authenticated === true ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to='/login' />
-      )
-    }
+    render={props => (auth.authenticated === true ? <Component {...props} /> : <Redirect to='/login' />)}
   />
 )
-
-ProtectedRoute.PropTypes = {
-  auth: PropTypes.object.isRequired,
-}
 
 const mapStateToProps = state => ({
   auth: state.auth,

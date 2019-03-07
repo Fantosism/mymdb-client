@@ -14,12 +14,6 @@ class Register extends Component {
     errors: {},
   }
 
-  static PropTypes = {
-    registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
-  }
-
   componentWillReceiveProps(nextProps) {
     return nextProps.errors ? this.setState({ errors: nextProps.errors }) : null
   }
@@ -95,9 +89,7 @@ class Register extends Component {
             />
             <span className='red-text'>{errors.passwordConfirm}</span>
           </div>
-          <div
-            className='col s12 center-align'
-            style={{ paddingLeft: '11.250px', alignContent: 'center' }}>
+          <div className='col s12 center-align' style={{ paddingLeft: '11.250px', alignContent: 'center' }}>
             <button
               style={{
                 width: '150px',
@@ -121,5 +113,5 @@ const mapStateToProps = state => ({ auth: state.auth, errors: state.errors })
 
 export default connect(
   mapStateToProps,
-  { registerUser }
+  { registerUser },
 )(withRouter(Register))

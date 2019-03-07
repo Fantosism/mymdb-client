@@ -16,12 +16,6 @@ class Login extends Component {
     }
   }
 
-  static PropTypes = {
-    loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
-  }
-
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.authenticated) {
@@ -59,8 +53,7 @@ class Login extends Component {
         <div className='container' id='container'>
           <div className='col s12'>
             <Link to='/' className='btn-flat waves-effect'>
-              <i className='material-icons left'>keyboard_backspace</i> Back to
-              home
+              <i className='material-icons left'>keyboard_backspace</i> Back to home
             </Link>
             <div className='col s12' style={{ paddingLeft: '11.250px' }}>
               <h4>
@@ -133,5 +126,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser },
 )(Login)

@@ -3,6 +3,7 @@ import SearchBar from '../search/searchBar'
 import { Link } from 'react-router-dom'
 import './index.css'
 import UserMenu from '../userMenu/userMenu'
+import '../navbar.css'
 
 class Header extends Component {
   constructor() {
@@ -18,40 +19,44 @@ class Header extends Component {
   }
   render() {
     return (
-      <div className='App-header'>
-        <SearchBar />
-        {this.props.authenticated ? (
-          <div className='user-wrapper'>
-            {/* {this.props.user.photoURL */}
-            <i
-              onClick={this.toggleUserMenu}
-              className='material-icons'
-              width='75'
-              height='75'
-              padding='1rem'>
-              menu
-            </i>
+      <nav className='z-depth-2 nav-extended'>
+        <div className='nav-wrapper white'>
+          <Link
+            to='/'
+            style={{
+              fontFamily: 'monospace',
+              textDecoration: 'none',
+            }}
+            className='col s5 brand-logo center black-text'>
+            <i className='material-icons'>movie</i>
+            MyMDB
+          </Link>
+          <SearchBar />
+          {console.log('hello i am props ', JSON.stringify(this.props, null, 2))}
+          {console.log('hello i am state ', JSON.stringify(this.state, null, 2))}
 
-            {this.props.user.name ? (
-              <UserMenu
-                name={this.props.user.name}
-                isOpen={this.state.userMenuOpen}
-              />
-            ) : (
-              <UserMenu
-                name={this.props.user.name}
-                isOpen={this.state.userMenuOpen}
-              />
-            )}
-          </div>
-        ) : (
-          <div className='login-tickets-wrapper'>
-            <Link className='' to='/login'>
-              <span className='login-tickets-label'>Register / Log in</span>
-            </Link>
-          </div>
-        )}
-      </div>
+          {this.props.state.auth.authenticated ? (
+            <div className='user-wrapper'>
+              {/* {this.props.user.photoURL */}
+              <i onClick={this.toggleUserMenu} className='material-icons' width='75' height='75' padding='1rem'>
+                menu
+              </i>
+
+              {this.props.state.auth.user.name ? (
+                <UserMenu name={this.props.state.auth.user.name} isOpen={this.state.userMenuOpen} />
+              ) : (
+                <UserMenu name={this.props.state.auth.user.name} isOpen={this.state.userMenuOpen} />
+              )}
+            </div>
+          ) : (
+            <div className='login-tickets-wrapper'>
+              <Link className='' to='/login'>
+                <span className='login-tickets-label'>Register / Log in</span>
+              </Link>
+            </div>
+          )}
+        </div>
+      </nav>
     )
   }
 }
