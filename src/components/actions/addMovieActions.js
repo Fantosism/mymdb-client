@@ -7,10 +7,6 @@ const searchMovies = query => dispatch => {
   axios
     .post(`${API_BASE_URL}/api/movie/`, query)
     .then(res => dispatch(addMovieSuccess(res)))
-    .then(res => {
-      const { data } = res.movie
-      console.log(data.theMovieDB, data.openMovieDB, data.tmdbVideo)
-    })
     .catch(err => dispatch(addMovieError(err)))
 }
 

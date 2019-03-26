@@ -34,7 +34,6 @@ class Register extends Component {
       password: this.state.password,
       passwordConfirm: this.state.passwordConfirm,
     }
-    console.log(newUser)
     this.props.registerUser(newUser, this.props.history)
   }
   render() {
@@ -113,5 +112,5 @@ const mapStateToProps = state => ({ auth: state.auth, errors: state.errors })
 
 export default connect(
   mapStateToProps,
-  { registerUser },
+  { registerUser }
 )(withRouter(Register))
