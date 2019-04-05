@@ -32,6 +32,8 @@ class Header extends Component {
             MyMDB
           </Link>
           <SearchBar />
+          {console.log('hello i am props ', JSON.stringify(this.props, null, 2))}
+          {console.log('hello i am state ', JSON.stringify(this.state, null, 2))}
 
           {this.props.state.auth.authenticated ? (
             <div className='user-wrapper'>

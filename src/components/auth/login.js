@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/authActions'
 import classnames from 'classnames'
-import './login.css'
 
 class Login extends Component {
   constructor() {
@@ -126,5 +125,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser },
+  { loginUser }
 )(Login)

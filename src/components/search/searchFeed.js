@@ -26,6 +26,7 @@ class SearchFeed extends Component {
   }
 
   getSearchMovies = async (searchTerm, page = 1) => {
+    console.log('page', page)
     const TERM = searchTerm.replace(/\s/g, '+')
     let stuff = {
       apiOne: {

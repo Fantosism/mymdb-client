@@ -17,13 +17,10 @@ class CardItem extends Component {
     }
   }
 
-  // favoriteMovie = async () => {
-  //   this.setState({ favorited: true })
-  //   await axios ({
-  //     method:
-  //   })
-  //   // this.props.onFavoriteSelect(this.props.id, 'favorites')
-  // }
+  favoriteMovie = () => {
+    this.setState({ favorited: true })
+    // this.props.onFavoriteSelect(this.props.id, 'favorites')
+  }
 
   unfavoriteMovie = () => {
     this.setState({ favorited: false })
@@ -32,16 +29,16 @@ class CardItem extends Component {
 
   addWatchLaterMovie = async () => {
     this.setState({ toWatchLater: true })
+    console.log('I AM PROPS', this.props)
     await axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/movie/${this.props.id}/external_ids?api_key=25cf167dc9b3a3194a8b86fe5968fe13`,
     })
-      // .then(res => {
-      //   console.log('**********', res)
-      //   return res.data['imdb_id']
-      // })
-      .then(() => {
-        console.log('token', token)
+      .then(res => {
+        console.log('**********', res)
+        return res.data['imdb_id']
+      })
+      .then(() =>
         axios({
           method: 'post',
           url: `${API_BASE_URL}/api/movie`,
@@ -50,8 +47,8 @@ class CardItem extends Component {
             'Content-Type': 'application/json',
             Authorization: token,
           },
-        })
-      })
+        }),
+      )
     // this.props.onFavoriteSelect(this.props.id, 'watchLater')
   }
 

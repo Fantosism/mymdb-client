@@ -38,6 +38,7 @@ class SearchBar extends Component {
         t: searchTerm.replace(/\s/g, '+'),
       },
     }
+    console.log('newQuery', newQuery)
     this.props.dispatch(searchMovies(newQuery))
     // this.props.history.push({
     //   pathname: `dashboard/search`,

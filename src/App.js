@@ -152,6 +152,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        {console.log('i am state: ', JSON.stringify(this.state, null, 2))}
         {this.state.loading && <Loading />}
         <Router>
           <div className='App'>
