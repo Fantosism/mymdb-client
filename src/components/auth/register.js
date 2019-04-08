@@ -52,17 +52,24 @@ class Register extends Component {
           </p>
         </div>
         <form noValidate onSubmit={this.onSubmit}>
-          <div className='input-field col s12'>
-            <label htmlFor='name'>Name</label>
-            <input
-              onChange={this.onChange}
-              value={this.state.name}
-              error={errors.name}
-              id='name'
-              type='text'
-              className={classnames('', { invalid: errors.name })}
-            />
-            <span className='red-text'>{errors.name}</span>
+          <div className='field'>
+            <label htmlFor='name' className='label'>
+              Name
+            </label>
+            <div className='control has-icons-left'>
+              <input
+                onChange={this.onChange}
+                value={this.state.name}
+                error={errors.name}
+                id='name'
+                type='text'
+                className='input is-danger'
+              />
+              <span className='icon is-small is-left'>
+                <i className='fas fa-user' />
+              </span>
+            </div>
+            <p className='help is-danger'>{errors.name}</p>
           </div>
           <div className='input-field col s12'>
             <label htmlFor='password'>Password</label>

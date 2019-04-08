@@ -1,6 +1,33 @@
 @charset "utf-8"
 @import "../../node_modules/bulma/bulma.sass"
 @import "partials/base"
+@import "modules/base"
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700')
+
+// Set your brand colors
+$purple: #8A4D76
+$pink: #FA7C91
+$brown: #757763
+$beige-light: #D0D1CD
+$beige-lighter: #EFF0EB
+
+// Update global variables
+$family-sans-serif: "Nunito", sans-serif
+$grey-dark: $brown
+$grey-light: $beige-light
+$primary: $purple
+$link: $pink
+$widescreen-enabled: false
+$fullhd-enabled: false
+
+// Update component variables
+$body-background-color: $beige-lighter
+$control-border-width: 2px
+$input-border-color: transparent
+$input-shadow: none
+
 
 .list-container__movie-item 
   flex-basis: 0
@@ -11,8 +38,7 @@
 
 
 .list__movie-image 
-  width: 185px
-  height: 278px
+  @include size(185px,278px)
   margin: 0 auto 15px
   box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.4)
   position: relative
@@ -22,16 +48,14 @@
 
 
 .list__movie-image-link 
-  width: 100%
-  height: 100%
+  @include size(100%)
   display: block
 
 
 .list__movie-no_image_holder 
   display: inline-block
   background-color: #dbdbdb
-  width: 185px
-  height: 278px
+  @include size(185px,278px)
   position: relative
   span 
     @extend %abs-50-trans
@@ -58,8 +82,7 @@
   border-radius: 50%
   font-size: 8px
   z-index: 1
-  width: 30px
-  height: 30px
+  @include size(30px)
   line-height: 30px
   text-align: center
   top: 15px
@@ -72,8 +95,7 @@
   position: absolute
   bottom: -40px
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%)
-  width: 100%
-  height: 40px
+  @include size(100%,40px)
   display: flex
   align-items: center
   justify-content: space-around
@@ -85,8 +107,7 @@
   fill: #fff
   transition: fill 0.4s ease
   cursor: pointer
-  height: 15px
-  width: auto
+  @include size(15px, auto)
 
 
 .action__favorite:hover,
@@ -102,3 +123,4 @@
 .list__movie-image:hover .list__movie-actions 
   bottom: 0
 
+// End list
