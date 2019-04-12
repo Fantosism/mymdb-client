@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/authActions'
 import searchMovies from '../actions/searchActions'
-import UserSpace from '../userSpace/userSpace'
-import Header from '../header/header'
-import SideBar from '../sidebar/sidebar'
-import Footer from '../footer/footer'
 import SearchFeed from '../search/searchFeed'
 import './dashboard.css'
 
@@ -112,5 +107,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser, searchMovies },
+  { logoutUser, searchMovies }
 )(Dashboard)

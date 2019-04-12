@@ -33,7 +33,6 @@ class Register extends Component {
       password: this.state.password,
       passwordConfirm: this.state.passwordConfirm,
     }
-    console.log(newUser)
     this.props.registerUser(newUser, this.props.history)
   }
   render() {
@@ -51,7 +50,7 @@ class Register extends Component {
             Already have an account? <Link to='/login'>Log in</Link>
           </p>
         </div>
-        <form noValidate onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <div className='field'>
             <label htmlFor='name' className='label'>
               Name
@@ -63,25 +62,33 @@ class Register extends Component {
                 error={errors.name}
                 id='name'
                 type='text'
-                className='input is-danger'
+                className='input'
               />
               <span className='icon is-small is-left'>
                 <i className='fas fa-user' />
               </span>
             </div>
-            <p className='help is-danger'>{errors.name}</p>
+            <p className='help'>{errors.name}</p>
           </div>
-          <div className='input-field col s12'>
-            <label htmlFor='password'>Password</label>
-            <input
-              onChange={this.onChange}
-              value={this.state.password}
-              error={errors.password}
-              id='password'
-              type='password'
-              className={classnames('', { invalid: errors.password })}
-            />
-            <span className='red-text'>{errors.password}</span>
+
+          <div className='field'>
+            <label classname='label' htmlFor='password'>
+              Password
+            </label>
+            <div className='control has-icons-left'>
+              <input
+                onChange={this.onChange}
+                value={this.state.password}
+                error={errors.password}
+                id='password'
+                type='password'
+                className='input'
+              />
+              <span className='icon is-small is-left'>
+                <i className='fas fa-lock' />
+              </span>
+            </div>
+            <p className='help is-danger'>{errors.password}</p>
           </div>
           <div className='input-field col s12'>
             <label htmlFor='passwordConfirm'>Confirm Password</label>

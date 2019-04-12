@@ -9,7 +9,6 @@ const searchMovies = query => dispatch => {
     .then(res => dispatch(addMovieSuccess(res)))
     .then(res => {
       const { data } = res.movie
-      console.log(data.theMovieDB, data.openMovieDB, data.tmdbVideo)
     })
     .catch(err => dispatch(addMovieError(err)))
 }

@@ -11,7 +11,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-loader": "^8.0.5",
+    "bulma": "^0.7.4",
     "classnames": "^2.2.6",
+    "compass": "^0.1.1",
     "dotenv": "^6.2.0",
     "is-empty": "^1.2.0",
     "jwt-decode": "^2.2.0",

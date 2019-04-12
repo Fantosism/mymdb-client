@@ -17,8 +17,27 @@ class CardItem extends Component {
     }
   }
 
-  favoriteMovie = () => {
+  favoriteMovie = async () => {
     this.setState({ favorited: true })
+    await axios({
+      method: 'get',
+      url: `https://api.themoviedb.org/3/movie/${this.props.id}/external_ids?api_key=25cf167dc9b3a3194a8b86fe5968fe13`,
+    })
+      .then(res => {
+        return res.data['imdb_id']
+      })
+      .then(() =>
+        axios({
+          method: 'post',
+          url: `${API_BASE_URL}/api/movie/favorite`,
+          data: { movies: this.props },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+          },
+        })
+      )
+
     // this.props.onFavoriteSelect(this.props.id, 'favorites')
   }
 
@@ -33,13 +52,11 @@ class CardItem extends Component {
 
   addWatchLaterMovie = async () => {
     this.setState({ toWatchLater: true })
-    console.log('I AM PROPS', this.props)
     await axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/movie/${this.props.id}/external_ids?api_key=25cf167dc9b3a3194a8b86fe5968fe13`,
     })
       .then(res => {
-        console.log('**********', res)
         return res.data['imdb_id']
       })
       .then(() =>
@@ -122,32 +139,6 @@ class CardItem extends Component {
     }
   }
 
-  renderVideoModal = () => {
-    // pass video link from props into function to make unique for card
-    return (
-      <div>
-        {/* // render the video button */}
-        <svg
-          // on click of button, call function to open up modal
-          onClick={() => this.playVideo()}
-          width='10'
-          height='15'
-          className='list__movie-action action__playtrailer'
-          viewBox='0 0 10 15'
-          xmlns='http://www.w3.org/2000/svg'>
-          <path d='M.013.135L9.7 7.5.012 14.865' />
-        </svg>
-
-        <div className='modal'>
-          <div>
-            <span>&times;</span>
-            <p>Text and stuff</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   renderWatchLaterClock = () => {
     if (this.props.state.auth.authenticated) {
       return this.state.toWatchLater ? (
@@ -189,8 +180,6 @@ class CardItem extends Component {
               <div className='list__movie-actions'>
                 {this.renderFavHeart()}
 
-                {this.renderVideoModal()}
-
                 {this.renderWatchLaterClock()}
               </div>
 
@@ -205,10 +194,7 @@ class CardItem extends Component {
             </div>
           ) : (
             <div>
-              <div className='list__movie-actions'>
-                {this.renderFavHeart(this.props.id)}
-                {this.renderVideoModal()}
-              </div>
+              <div className='list__movie-actions'>{this.renderFavHeart(this.props.id)}</div>
               <Link to={`/movie/${this.props.id}`}>
                 <div className='list__movie-no_image_holder' />
               </Link>

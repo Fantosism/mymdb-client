@@ -25,6 +25,7 @@ import Card from './components/card/card'
 import './index.css'
 import Axios from 'axios'
 import WatchLater from './components/WatchLater'
+import FavoriteMovie from './components/FavoriteMovie'
 
 // // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
@@ -152,7 +153,6 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        {console.log('i am state: ', JSON.stringify(this.state, null, 2))}
         {this.state.loading && <Loading />}
         <Router>
           <div className='App'>
@@ -160,7 +160,7 @@ class App extends Component {
             {/* <SearchFeed /> */}
             <Header {...this.props} />
 
-            <Route exact path='/' component={Splash} />
+            <Route exact path='/' render={({ history }) => <Splash history={history} {...this.props} />} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
 
@@ -178,6 +178,7 @@ class App extends Component {
               )}
             />
             <Route exact path='/watch-later' component={WatchLater} />
+            <Route exact path='/favorites' component={FavoriteMovie} />
             <Switch>
               <ProtectedRoute path='/dashboard' component={Dashboard} />
             </Switch>

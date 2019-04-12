@@ -6,57 +6,53 @@ import UserMenu from '../userMenu/userMenu'
 import '../navbar.css'
 
 class Header extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       userMenuOpen: false,
     }
   }
-  toggleUserMenu = () => {
-    this.setState({
-      userMenuOpen: !this.state.userMenuOpen,
-    })
+  logoutUser = async props => {
+    await localStorage.removeItem('jwtToken')
+    props.history.push('/')
   }
   render() {
     return (
-      <nav className='z-depth-2 nav-extended'>
-        <div className='nav-wrapper white'>
-          <Link
-            to='/'
-            style={{
-              fontFamily: 'monospace',
-              textDecoration: 'none',
-            }}
-            className='col s5 brand-logo center black-text'>
-            <i className='material-icons'>movie</i>
-            MyMDB
-          </Link>
-          <SearchBar />
-          {console.log('hello i am props ', JSON.stringify(this.props, null, 2))}
-          {console.log('hello i am state ', JSON.stringify(this.state, null, 2))}
-
-          {this.props.state.auth.authenticated ? (
-            <div className='user-wrapper'>
-              {/* {this.props.user.photoURL */}
-              <i onClick={this.toggleUserMenu} className='material-icons' width='75' height='75' padding='1rem'>
-                menu
-              </i>
-
-              {this.props.state.auth.user.name ? (
-                <UserMenu name={this.props.state.auth.user.name} isOpen={this.state.userMenuOpen} />
-              ) : (
-                <UserMenu name={this.props.state.auth.user.name} isOpen={this.state.userMenuOpen} />
-              )}
+      <div className='navbar-container'>
+        <nav class='level'>
+          <div class='level-left'>
+            <div class='level-item'>
+              <SearchBar />
             </div>
-          ) : (
-            <div className='login-tickets-wrapper'>
-              <Link className='' to='/login'>
-                <span className='login-tickets-label'>Register / Log in</span>
+            <div class='level-item'>
+              <Link
+                to='/'
+                style={{
+                  fontFamily: 'monospace',
+                  textDecoration: 'none',
+                }}
+                className='level-item has-text-centered'>
+                <i className='material-icons'>movie</i>
+                MyMDB
               </Link>
             </div>
-          )}
-        </div>
-      </nav>
+          </div>
+
+          <div class='level-right'>
+            <Link className='title level-item has-text-centered' to='/favorites'>
+              Favorites
+            </Link>
+            <Link className='title level-item has-text-centered' to='/watch-later'>
+              Watchlist
+            </Link>
+
+            <a className='title level-item has-text-centered' href='#' onClick={() => this.logoutUser()}>
+              Logout
+            </a>
+            <a href='#' />
+          </div>
+        </nav>
+      </div>
     )
   }
 }

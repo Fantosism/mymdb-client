@@ -37,6 +37,9 @@ class SearchBar extends Component {
       apiTwo: {
         t: searchTerm.replace(/\s/g, '+'),
       },
+      apiThree: {
+        q: searchTerm.replace(/\s/g, ' ') + ' trailer',
+      },
     }
     console.log('newQuery', newQuery)
     this.props.dispatch(searchMovies(newQuery))
@@ -50,17 +53,20 @@ class SearchBar extends Component {
     const { searchTerm } = this.state
 
     return (
-      <div className='SearchBar-wrapper'>
-        <form onSubmit={this.handleSearchSubmit}>
+      <form onSubmit={this.handleSearchSubmit} type='submit' class='form field has-addons'>
+        <p class='control'>
           <input
-            className='search-movie-input black'
+            className='input'
             type='text'
             placeholder='Search movies...'
             onChange={this.handleSearchChange}
             value={searchTerm}
           />
-        </form>
-      </div>
+        </p>
+        <p class='control'>
+          <button class='button'>Search</button>
+        </p>
+      </form>
     )
   }
 }
