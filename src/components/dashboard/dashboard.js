@@ -51,19 +51,7 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props.auth
-    if (this.state.queries) {
-      ;<div className='col s12 center-align'>
-        <h3>
-          <b>Hey there,</b> {user.name.split(' ')[0]}
-          <p className=''>
-            You are logged in{' '}
-            <span className='emoji film' role='img' aria-label='movie-reel'>
-              🎥
-            </span>
-          </p>
-        </h3>
-      </div>
-    }
+
     return (
       <div>
         <div>{/* <Header authenticated={this.props.auth.authenticated} user={this.props.auth.user.id} /> */}</div>
