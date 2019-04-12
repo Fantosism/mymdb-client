@@ -12,7 +12,7 @@ class Header extends Component {
       userMenuOpen: false,
     }
   }
-  logoutUser = async props => {
+  logoutUser = async () => {
     await localStorage.removeItem('jwtToken')
     return <Redirect to='/' />
   }

@@ -6,28 +6,31 @@
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700')
 
-// Set your brand colors
-$purple: #8A4D76
-$pink: #FA7C91
-$brown: #757763
-$beige-light: #D0D1CD
-$beige-lighter: #EFF0EB
+$primary: #dc1b18
+$info: #491a1a
+$success: #77833f
+$warning: #f57207
+$danger: #f44336
 
-// Update global variables
 $family-sans-serif: "Nunito", sans-serif
-$grey-dark: $brown
-$grey-light: $beige-light
-$primary: $purple
-$link: $pink
 $widescreen-enabled: false
-$fullhd-enabled: false
+$fullhd-enabled: false 
 
-// Update component variables
-$body-background-color: $beige-lighter
 $control-border-width: 2px
 $input-border-color: transparent
 $input-shadow: none
 
+.button.is-primary
+  background-color: #dc1b18
+  color: #EDEAEE
+  &:hover
+    background-color: #e49a51
+
+.button.is-danger 
+  background-color: #f57207
+  color: #edeaee
+  &:hover
+    background-color: #F44336
 
 .list-container__movie-item 
   flex-basis: 0
@@ -132,10 +135,12 @@ $input-shadow: none
 /* BASIC */
 
 .colored-anchor 
-  color: #92badd
+  color: #94797b
   display: inline-block
   text-decoration: none
   font-weight: 400
+  &:hover
+    color: #e49a51
 
 
 .active-title 
@@ -184,14 +189,17 @@ $input-shadow: none
 /* TABS */
 .title
   margin-bottom: 0px !important
+  color: #EDEAEE
+  &:hover
+    color: #e49a51
 
 h2.inactive 
   color: #cccccc
 
 
 h2.active 
-  color: #0d0d0d
-  border-bottom: 2px solid #5fbae9
+  color: #94797b
+  border-bottom: 2px solid #e49a51
 
 
 /* FORM TYPOGRAPHY*/
@@ -206,8 +214,8 @@ h2.active
   display: inline-block
   text-transform: uppercase
   font-size: 13px
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4)
-  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4)
+  -webkit-box-shadow: 0 10px 30px 0 rgba(228, 154, 81, 0.4)
+  box-shadow: 0 10px 30px 0 rgba(228, 154, 81, 0.4)
   -webkit-border-radius: 5px 5px 5px 5px
   border-radius: 5px 5px 5px 5px
   margin: 5px 20px 40px 20px
@@ -219,7 +227,7 @@ h2.active
 
 
 .input-styles:hover 
-  background-color: #39ace7
+  background-color: #e49a51
 
 
 .input-styles:active 
@@ -233,7 +241,7 @@ h2.active
 .text-styles 
   background-color: #f6f6f6
   border: none
-  color: #0d0d0d
+  color: #EDEAEE
   padding: 15px 32px
   text-align: center
   text-decoration: none
@@ -253,7 +261,7 @@ h2.active
 
 .text-styles:focus 
   background-color: #fff
-  border-bottom: 2px solid #5fbae9
+  border-bottom: 2px solid #e49a51
 
 
 .text-styles:placeholder 
@@ -370,11 +378,11 @@ h2.active
   bottom: -10px
   width: 0
   height: 2px
-  background-color: #56baed
+  background-color: #e49a51
   content: ''
   transition: width 0.2s
   &:hover
-    color: #0d0d0d
+    color: #E49A51
   &:hover:after
     width: 100%
 
@@ -402,7 +410,7 @@ h2.active
   padding-bottom: 10px
 
 .big-text-padding
-  padding-left: 15vh
+  padding-left: 13vh
   font-size: 3rem
   & .material-icons
     font-size: 3rem !important
@@ -429,4 +437,18 @@ h2.active
     & .material-icons
       display: none
 
+html
+  background-color: #491a1a
+  height: 100%
+
+body
+  color: #edeaee
   
+h3
+  font-size: 1.5rem
+
+.main-content
+  font-size: 1.25rem
+
+.padding-top
+  padding-top: 15px
