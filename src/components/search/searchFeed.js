@@ -79,15 +79,15 @@ class SearchFeed extends Component {
         <div className='Main-wrapper'>
           <h1 className='App-main-title'>Search results</h1>
           {theMovieDB.results && (
-            <div>
+            <div className='container'>
               <p>
                 There are <b>{theMovieDB.total_results}</b> results for: "{searchTerm}
                 ".
               </p>
               <List list={theMovieDB.results} ids={this.props.movies.openMovieDB} />
+              <Button className='button' onClick={() => this.getSearchMovies(searchTerm, page + 1)} text='Load more' />
             </div>
           )}
-          <Button className='button' onClick={() => this.getSearchMovies(searchTerm, page + 1)} text='Load more' />
         </div>
       )
     } else {
