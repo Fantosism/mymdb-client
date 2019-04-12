@@ -72,26 +72,15 @@ class Dashboard extends Component {
                 <UserSpace />
               </div> */}
               <div className='col s12 center-align'>
-                <h4>
+                <h3>
                   <b>Hey there,</b> {user.name.split(' ')[0]}
-                  <p className='flow-text grey-text text-darken-1'>
+                  <p className=''>
                     You are logged in{' '}
                     <span className='emoji film' role='img' aria-label='movie-reel'>
                       🎥
                     </span>
                   </p>
-                </h4>
-                <button
-                  style={{
-                    width: '150px',
-                    borderRadius: '3px',
-                    letterSpacing: '1.5px',
-                    marginTop: '1rem',
-                  }}
-                  onClick={this.onLogoutClick}
-                  className='btn btn-large waves-effect waves-light hoverable blue accent-3'>
-                  Logout
-                </button>
+                </h3>
               </div>
             </div>
           </div>
