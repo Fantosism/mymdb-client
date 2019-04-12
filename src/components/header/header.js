@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SearchBar from '../search/searchBar'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import './index.css'
 import UserMenu from '../userMenu/userMenu'
 import '../navbar.css'
@@ -14,15 +14,17 @@ class Header extends Component {
   }
   logoutUser = async props => {
     await localStorage.removeItem('jwtToken')
-    props.history.push('/')
+    return <Redirect to='/' />
   }
   render() {
     return (
-      <div className='navbar-container'>
-        <nav class='level'>
-          <div class='level-left'>
-            <div class='level-item'>
-              <SearchBar />
+      <div className='flex-container'>
+        <div className='navbar-container'>
+          <nav class='level'>
+            <div class='level-left'>
+              <div class='level-item'>
+                <SearchBar />
+              </div>
             </div>
             <div class='level-item'>
               <Link
@@ -31,27 +33,27 @@ class Header extends Component {
                   fontFamily: 'monospace',
                   textDecoration: 'none',
                 }}
-                className='title level-item has-text-centered'>
+                className='title level-item has-text-centered big-text-padding'>
                 <i className='material-icons'>movie</i>
                 MyMDB
               </Link>
             </div>
-          </div>
 
-          <div class='level-right'>
-            <Link className='title level-item has-text-centered' to='/favorites'>
-              Favorites
-            </Link>
-            <Link className='title level-item has-text-centered' to='/watch-later'>
-              Watchlist
-            </Link>
+            <div class='level-right'>
+              <Link className='title level-item has-text-centered' to='/favorites'>
+                Favorites
+              </Link>
+              <Link className='title level-item has-text-centered' to='/watch-later'>
+                Watchlist
+              </Link>
 
-            <a className='title level-item has-text-centered' href='#' onClick={props => this.logoutUser(props)}>
-              Logout
-            </a>
-            <a href='#' />
-          </div>
-        </nav>
+              <a className='title level-item has-text-centered' href='#' onClick={props => this.logoutUser(props)}>
+                Logout
+              </a>
+              <a href='#' />
+            </div>
+          </nav>
+        </div>
       </div>
     )
   }

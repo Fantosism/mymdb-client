@@ -9255,8 +9255,8 @@ label.panel-block:hover {
 }
 
 /* TABS */
-.field {
-  padding-top: 10px;
+.title {
+  margin-bottom: 0px !important;
 }
 
 h2.inactive {
@@ -9441,12 +9441,10 @@ h2.active {
   content: "";
   transition: width 0.2s;
 }
-
-.underlineHover:hover {
+.underlineHover:after:hover {
   color: #0d0d0d;
 }
-
-.underlineHover:hover:after {
+.underlineHover:after:hover:after {
   width: 100%;
 }
 
@@ -9471,6 +9469,48 @@ h2.active {
 
 .bottom-padding {
   padding-bottom: 10px;
+}
+
+.big-text-padding {
+  padding-left: 15vh;
+  font-size: 3rem;
+}
+.big-text-padding .material-icons {
+  font-size: 3rem !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .level {
+    flex-direction: column;
+  }
+  .level .level-left {
+    flex-direction: column;
+  }
+  .level .level-item {
+    flex-direction: column;
+  }
+  .level .level-right {
+    flex-direction: column;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .big-text-padding {
+    padding-left: 0px;
+    font-size: 3rem;
+  }
+  .big-text-padding .material-icons {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
