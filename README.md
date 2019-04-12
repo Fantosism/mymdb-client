@@ -4,9 +4,9 @@ MyMDB is a personal movie database watchlist. Create an account and keep track o
 
 [View a live demonstration of the application here.](https://mymdb-client.herokuapp.com/)
 
-Username: 'Tezting'
+Username: 'TrialAccount'
 
-Password: '123456789'
+Password: 'password1234'
 
 Although feel free to make your own account.
 
