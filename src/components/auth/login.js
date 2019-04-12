@@ -73,9 +73,9 @@ class Login extends Component {
                 />
               </div>
             </div>
-            <div className='field'>
+            <div className='field bottom-padding'>
               <div className='control has-text-centered'>
-                <button className='input-styles fadeIn fourth button ' type='submit'>
+                <button className='fadeIn fourth button' type='submit'>
                   Log In
                 </button>
               </div>
