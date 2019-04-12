@@ -36,3 +36,77 @@ Users are authenticated with Passport.js middleware. Bcrypt is used to hash user
 
 [Heroku](https://mymdb-client.herokuapp.com/)  
 [Github Repository](https://github.com/Fantosism/mymdb)
+
+### Schema
+
+#### Movie
+
+```
+{
+  movies: {
+    type: Array,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  favorited: {
+    type: Array,
+  },
+},
+{
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  },
+}
+```
+
+#### User
+
+```
+{
+  name: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+  movieId: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie' },
+}
+```
+
+### API
+
+```
+/api
+├── /users
+│   └── GET
+│       └── /currentuser
+│   └── POST
+│       ├── /register
+│       └── /login
+├── /search
+│   └── POST
+│       └── /
+├── /movie
+│   └── GET
+│       ├── /
+│       └── /favorite
+│   └── POST
+│       ├── /
+│       └── /favorite
+│   └── DELETE
+│       └── /:id
+```

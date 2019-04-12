@@ -17,7 +17,6 @@ export default function FavoriteMovie() {
       },
     })
       .then(res => {
-        console.log(JSON.stringify(res.data, null, 2))
         setMovieArr(res.data[0].favorited)
       })
       .then(() => console.log('!!!!!!!!!!!!!!', movieArr))

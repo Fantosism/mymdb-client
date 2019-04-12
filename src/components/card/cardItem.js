@@ -46,10 +46,6 @@ class CardItem extends Component {
     // this.props.onFavoriteDeselect(this.props.id, 'favorites')
   }
 
-  playVideo = () => {
-    console.log(' I AM HERE')
-  }
-
   addWatchLaterMovie = async () => {
     this.setState({ toWatchLater: true })
     await axios({

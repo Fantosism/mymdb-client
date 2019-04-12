@@ -22,17 +22,11 @@ class SearchBar extends Component {
     e.preventDefault()
     const { searchTerm } = this.state
     this.props.history.push({
-      // pathname: `/search`,
       search: `?query=${searchTerm}`,
     })
     const newQuery = {
       apiOne: {
         query: searchTerm.replace(/\s/g, '+'),
-        // "primary_release_year" : this.yearRef.current.value,
-        // "sort_by": this.sortByRef.current.value,
-        // "with_genres": this.genresRef.current.value,
-        // "with_keywords": this.keywordsRef.current.value,
-        // "vote_average.gte": this.ratingRef.current.value
       },
       apiTwo: {
         t: searchTerm.replace(/\s/g, '+'),
@@ -41,12 +35,8 @@ class SearchBar extends Component {
         q: searchTerm.replace(/\s/g, ' ') + ' trailer',
       },
     }
-    console.log('newQuery', newQuery)
+
     this.props.dispatch(searchMovies(newQuery))
-    // this.props.history.push({
-    //   pathname: `dashboard/search`,
-    //   search: searchTerm,
-    // })
   }
 
   render() {
