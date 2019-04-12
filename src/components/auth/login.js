@@ -44,7 +44,6 @@ class Login extends Component {
   }
 
   render() {
-    const { errors } = this.state
     return (
       <div class='wrapperz fadeInDown has-text-centered'>
         <div id='formContent'>

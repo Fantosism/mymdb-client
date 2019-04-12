@@ -31,7 +31,7 @@ class Header extends Component {
                   fontFamily: 'monospace',
                   textDecoration: 'none',
                 }}
-                className='level-item has-text-centered'>
+                className='title level-item has-text-centered'>
                 <i className='material-icons'>movie</i>
                 MyMDB
               </Link>
@@ -46,7 +46,7 @@ class Header extends Component {
               Watchlist
             </Link>
 
-            <a className='title level-item has-text-centered' href='#' onClick={() => this.logoutUser()}>
+            <a className='title level-item has-text-centered' href='#' onClick={props => this.logoutUser(props)}>
               Logout
             </a>
             <a href='#' />
