@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 const Splash = props => {
   let token = localStorage.getItem('jwtToken')
 
-  if (token) {
+  if (token && props.authenticated) {
     return <Redirect to='/dashboard' />
   }
   return (

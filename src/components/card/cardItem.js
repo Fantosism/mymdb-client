@@ -183,9 +183,7 @@ class CardItem extends Component {
                 {this.renderWatchLaterClock()}
               </div>
 
-              <Link
-                className='list__movie-image-link'
-                to={`/movie/${this.props.id}-${this.titleURL(this.props.title)}`}>
+              <Link to={`/movie/${this.props.id}`} state={{ state: this.props.state }}>
                 <img
                   src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${this.props.posterPath}`}
                   alt={this.props.title}
@@ -195,7 +193,7 @@ class CardItem extends Component {
           ) : (
             <div>
               <div className='list__movie-actions'>{this.renderFavHeart(this.props.id)}</div>
-              <Link to={`/movie/${this.props.id}`}>
+              <Link to={`/movie/${this.props.id}`} params={{ state: this.props.state }}>
                 <div className='list__movie-no_image_holder' />
               </Link>
             </div>

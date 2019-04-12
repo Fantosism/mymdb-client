@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/authActions'
-import classnames from 'classnames'
 
 class Login extends Component {
   constructor(props) {
@@ -57,7 +55,7 @@ class Login extends Component {
                   onChange={this.onChange}
                   type='text'
                   id='name'
-                  placeholder='login'
+                  placeholder='TrialAccount'
                 />
               </div>
             </div>
@@ -68,7 +66,7 @@ class Login extends Component {
                   onChange={this.onChange}
                   type='text'
                   id='password'
-                  placeholder='password'
+                  placeholder='password1234'
                 />
               </div>
             </div>

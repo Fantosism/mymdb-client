@@ -17,45 +17,68 @@ class Header extends Component {
     return <Redirect to='/' />
   }
   render() {
-    return (
-      <div className='flex-container'>
-        <div className='navbar-container'>
-          <nav class='level'>
-            <div class='level-left'>
-              <div class='level-item'>
-                <SearchBar />
+    if (this.props.state.auth.authenticated) {
+      return (
+        <div className='flex-container'>
+          <div className='navbar-container'>
+            <nav class='level'>
+              <div class='level-left'>
+                <div class='level-item'>
+                  <SearchBar />
+                </div>
               </div>
-            </div>
-            <div class='level-item'>
-              <Link
-                to='/'
-                style={{
-                  fontFamily: 'monospace',
-                  textDecoration: 'none',
-                }}
-                className='title level-item has-text-centered big-text-padding'>
-                <i className='material-icons'>movie</i>
-                MyMDB
-              </Link>
-            </div>
+              <div class='level-item'>
+                <Link
+                  to='/'
+                  style={{
+                    fontFamily: 'monospace',
+                    textDecoration: 'none',
+                  }}
+                  className='title level-item has-text-centered big-text-padding'>
+                  <i className='material-icons'>movie</i>
+                  MyMDB
+                </Link>
+              </div>
 
-            <div class='level-right'>
-              <Link className='title level-item has-text-centered' to='/favorites'>
-                Favorites
-              </Link>
-              <Link className='title level-item has-text-centered' to='/watch-later'>
-                Watchlist
-              </Link>
+              <div class='level-right'>
+                <Link className='title level-item has-text-centered' to='/favorites'>
+                  Favorites
+                </Link>
+                <Link className='title level-item has-text-centered' to='/watch-later'>
+                  Watchlist
+                </Link>
 
-              <a className='title level-item has-text-centered' href='#' onClick={props => this.logoutUser(props)}>
-                Logout
-              </a>
-              <a href='#' />
-            </div>
-          </nav>
+                <a className='title level-item has-text-centered' href='#' onClick={props => this.logoutUser(props)}>
+                  Logout
+                </a>
+                <a href='#' />
+              </div>
+            </nav>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div className='flex-container'>
+          <div className='navbar-container'>
+            <nav class='level'>
+              <div class='level-item'>
+                <Link
+                  to='/'
+                  style={{
+                    fontFamily: 'monospace',
+                    textDecoration: 'none',
+                  }}
+                  className='title level-item has-text-centered big-text'>
+                  <i className='material-icons'>movie</i>
+                  MyMDB
+                </Link>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
