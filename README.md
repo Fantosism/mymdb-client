@@ -14,12 +14,9 @@ Although feel free to make your own account.
 
 ### Client - React.js && Redux.js
 
-Front end broken into individual React components.
+Redux for global state management
 
-Used Redux to store state for access in particular child components.
-
-Routing with React-Router-Dom
-
+Routing with React Router
 ### Server - Node.js, Express.js, MongoDB
 
 MyMDB uses Node.js as server sided environment.
