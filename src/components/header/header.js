@@ -48,7 +48,7 @@ class Header extends Component {
                   Watchlist
                 </Link>
 
-                <a className='title level-item has-text-centered' href='#' onClick={props => this.logoutUser(props)}>
+                <a className='title level-item has-text-centered' href='#logout' onClick={() => this.logoutUser()}>
                   Logout
                 </a>
                 <a href='#' />
